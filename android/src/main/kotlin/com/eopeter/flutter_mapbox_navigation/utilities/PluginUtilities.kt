@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.annotation.NonNull
 import com.eopeter.flutter_mapbox_navigation.FlutterMapboxNavigationPlugin
 import com.eopeter.flutter_mapbox_navigation.models.MapBoxEvents
+import com.eopeter.flutter_mapbox_navigation.models.MapBoxLocation
 import com.eopeter.flutter_mapbox_navigation.models.MapBoxRouteProgressEvent
 import com.google.gson.Gson
 import com.mapbox.mapboxsdk.geometry.LatLng
@@ -43,6 +44,10 @@ class PluginUtilities {
                     "  \"data\": $dataString" +
                     "}"
             FlutterMapboxNavigationPlugin.eventSink?.success(jsonString)
+        }
+
+        fun sendEvent(event: MapBoxLocation) {
+            FlutterMapboxNavigationPlugin.eventSink?.success(event.jsonEventString())
         }
 
         fun sendEvent(event: MapBoxEvents, data: String = "") {

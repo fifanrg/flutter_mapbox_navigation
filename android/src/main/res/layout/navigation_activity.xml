@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white"
         app:cardUseCompatPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,9 @@
         <com.mapbox.navigation.ui.tripprogress.view.MapboxTripProgressView
             android:id="@+id/tripProgressView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            />
 
         <ImageView
             android:id="@+id/stop"

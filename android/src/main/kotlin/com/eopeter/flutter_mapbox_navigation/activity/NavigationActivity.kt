@@ -34,6 +34,7 @@ import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.navigation.base.TimeFormat
 import com.mapbox.navigation.base.extensions.applyDefaultNavigationOptions
 import com.mapbox.navigation.base.extensions.applyLanguageAndVoiceUnitOptions
+import com.mapbox.navigation.base.formatter.DistanceFormatterOptions
 import com.mapbox.navigation.base.options.NavigationOptions
 import com.mapbox.navigation.base.route.RouterCallback
 import com.mapbox.navigation.base.route.RouterFailure
@@ -178,18 +179,26 @@ class NavigationActivity : AppCompatActivity() {
         }
 
         // make sure to use the same DistanceFormatterOptions across different features
-        val distanceFormatterOptions = mapboxNavigation.navigationOptions.distanceFormatterOptions
+//        val distanceFormatterOptions = mapboxNavigation.navigationOptions.distanceFormatterOptions
+
+
+        /// TODO Provide local to navigation options
+        val formatter = DistanceFormatterOptions.Builder(
+            applicationContext,
+        ).locale(
+            Locale("EN", "AU")
+        ).build()
 
         // initialize maneuver api that feeds the data to the top banner maneuver view
         maneuverApi = MapboxManeuverApi(
-            MapboxDistanceFormatter(distanceFormatterOptions)
+            MapboxDistanceFormatter(formatter)
         )
 
         // initialize bottom progress view
         tripProgressApi = MapboxTripProgressApi(
             TripProgressUpdateFormatter.Builder(this)
                 .distanceRemainingFormatter(
-                    DistanceRemainingFormatter(distanceFormatterOptions)
+                    DistanceRemainingFormatter(formatter)
                 )
                 .timeRemainingFormatter(
                     TimeRemainingFormatter(this)

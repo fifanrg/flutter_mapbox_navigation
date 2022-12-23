@@ -1,5 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'app.dart';
 
-void main() => runApp(SampleNavigationApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DartPluginRegistrant.ensureInitialized();
+  runApp(SampleNavigationApp());
+}

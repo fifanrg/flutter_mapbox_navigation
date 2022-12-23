@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:flutter_mapbox_navigation/flutter_mapbox_navigation.dart';
+
 import 'events.dart';
 import 'routeProgressEvent.dart';
 
@@ -23,6 +25,8 @@ class RouteEvent {
     var dataJson = json['data'];
     if (eventType == MapBoxEvent.progress_change) {
       data = RouteProgressEvent.fromJson(dataJson);
+    } else if (eventType == MapBoxEvent.location_update) {
+      data = MapBoxLocation.fromJson(dataJson);
     } else {
       data = jsonEncode(json['data']);
     }

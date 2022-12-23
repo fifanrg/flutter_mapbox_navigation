@@ -8,3 +8,4 @@ export 'routeStep.dart';
 export 'wayPoint.dart';
 export 'navmode.dart';
 export 'voiceUnits.dart';
+export 'locationUpdateEvent.dart';

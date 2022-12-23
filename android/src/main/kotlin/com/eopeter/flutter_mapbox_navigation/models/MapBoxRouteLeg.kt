@@ -8,8 +8,10 @@ class MapBoxRouteLeg{
     val name: String? = null
     var distance: Double?
     var expectedTravelTime: Double?
-    val source: MapBoxLocation = MapBoxLocation("", 0.0, 0.0)
-    val destination: MapBoxLocation = MapBoxLocation("", 0.0, 0.0)
+
+    ///TODO
+//    val source: MapBoxLocation = MapBoxLocation("", 0.0, 0.0)
+//    val destination: MapBoxLocation = MapBoxLocation("", 0.0, 0.0)
     var steps: MutableList<MapBoxRouteStep> = mutableListOf()
 
     constructor(leg: RouteLeg)
